@@ -2,7 +2,7 @@
 
 const node=module.exports={};
 
-node.Node=function Node(value,index){
+node.Node=function Node(value){
     this.value=value;
     this.next={};
 }

@@ -1,39 +1,42 @@
 'use strict';
 
-const node=require('./node-object')
-
-const listArray=[];
+const node=require('./node-object');
 
 const listConstructor=module.exports={};
 
 //List needs data, which is an array provided when it is called. 
 listConstructor.List=function(data){
-let __length=0;
+if(data===null)
+{throw('no data inserted')}
+let __length=1;
 let oldNodeIndex=0;
-this.head=data[0];
-for(__length<data.length;__length++;)
-{let newNode=new Node(data[data.__length],__length);
-    if(length>0)
-    {
-        listArray[oldNodeIndex].next=newNode;
-        oldNodeIndex=length-1;
-    }
+this.head=Node(data[0]);
+for(this.__length<data.length;this.__length++;)
+{
+    let newNode=node.Node(data[data.this.__length]);
+    if(headNext==false)
+        {this.head.next=newNode;}
+    else
+        {oldNode.head=newNode;}
+    let oldNode=newNode;
+}
+this.end=newNode;
 }
 
 List.prototype.push=(data)=>{
-    let currentNode=this.head;
-    let newNode=new Node(data);
-    let found=false
-    while(found===false)
-    {
-        if(currentNode.next===null)
-        {found=true;}
-        else
-        {currentNode=currentNode.next;}
-    }
-    currentNode.next=newNode;
-    listArray.push(newNode);
-    this.__length+=1;
+    let newNode= node.Node(data);
+    // let currentNode=this.head;
+    // let found=false
+    // while(found===false)
+    // {
+    //     if(currentNode.next===null)
+    //     {found=true;}
+    //     else
+    //     {currentNode=currentNode.next;}
+    // }
+    this.end.next=newNode;
+    this.end=newNode
+    this.__length++;
 }
 
 List.prototype.searchNodeAt=(position)=>
@@ -42,6 +45,8 @@ List.prototype.searchNodeAt=(position)=>
         let found=false;
         while(found===false)
         { 
+            if(currentNode===null)
+            {return null;}
             if(i===positon)
                 {return currentNode.value;}
             currentNode=currentNode.next;
@@ -54,13 +59,24 @@ List.prototype.pop=()=>{
     let end=false;
     let currentNode=this.head;
     let returnValue;
-
     while(end===false){
         if(currentNode.next.next===null)
         {end=true;
         returnValue=currentNode.next;
-        currentNode.next=null;}
-        currentNode=currentNode.next;
+        currentNode.next=null;
+        this.end=currentNode;}
+        if(end===false){
+        currentNode=currentNode.next;}
     }
+    this.length--;
     return returnValue;
+}
+
+List.prototype.map=(callback)=>{
+    let returnArray=[];
+    let currentNode=this.head
+    while(currentNode!==null){
+    returnArray.push(callback(currentNode))
+    currentNode=currentNode.next;}
+    return returnArray;
 }
