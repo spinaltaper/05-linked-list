@@ -5,10 +5,10 @@
   "main": "index.js",
   "directories":{
     "lib": "lib",
-    "test": "test",
+    "test": "test"
   },
   "scripts": {
-    "test": "eslint . && jest --coverage"
+    "test": "jest --coverage"
   },
   "author": "",
   "license": "ISC",
